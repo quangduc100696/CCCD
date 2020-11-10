@@ -289,83 +289,95 @@ function RequestForm () {
                     </Grid>}
 
                   {classify === 3 &&
-                    <Grid container justify="space-between">
-                      <Grid item>
-                        <Typography>
-                          <b>DANH SÁCH MẪU VÂN TAY</b> (tối đa 10 mẫu/phiếu)
-                        </Typography>
+                    <Grid container item spacing={3} xl={12} xs={12}>
+                      <Grid item xl={12} xs={12}>
+                        <Grid
+                          container
+                          alignItems="center"
+                          justify="space-between"
+                        >
+                          <Grid>
+                            <b>DANH SÁCH MẪU VÂN TAY</b> (tối đa 10 mẫu/phiếu)
+                          </Grid>
+                          <Grid>
+                            <Tooltip title="Add">
+                              <label htmlFor="image">
+                                <Button
+                                  color="primary"
+                                  variant="contained"
+                                  aria-label="uploadFile"
+                                  component="span"
+                                >
+                                  Thêm mẫu
+                                </Button>
+                              </label>
+                            </Tooltip>
+                          </Grid>
+                          <Table>
+                            <TableHead>
+                              <TableRow>
+                                <TableCell>STT</TableCell>
+                                <TableCell>Mẫu vân tay</TableCell>
+                                <TableCell>Mã số vân tay</TableCell>
+                                <TableCell>Kết quả</TableCell>
+                                <TableCell>Thao tác</TableCell>
+                              </TableRow>
+                            </TableHead>
+                            <TableBody>
+                              <TableRow>
+                                <TableCell>{id}</TableCell>
+                                <TableCell>
+                                  <input
+                                    id="image"
+                                    className="imageUpload"
+                                    type="file"
+                                    onChange={onSelectFile}
+                                  />
+                                  {selectedFile &&
+                                    <img
+                                      alt=""
+                                      className="img"
+                                      src={preview}
+                                    />}
+                                </TableCell>
+                                <TableCell>{id}</TableCell>
+                                <TableCell>{id}</TableCell>
+                                <TableCell>
+                                  {show &&
+                                    <Grid>
+                                      <Tooltip title="See">
+                                        <IconButton
+                                          color="primary"
+                                          aria-label="see"
+                                        >
+                                          <VisibilityIcon />
+                                        </IconButton>
+                                      </Tooltip>
+                                      <Tooltip title="Upload file">
+                                        <IconButton
+                                          color="primary"
+                                          aria-label="uploadFile"
+                                          component="span"
+                                        >
+                                          <CloudUploadIcon />
+                                        </IconButton>
+                                      </Tooltip>
+                                      <Tooltip title="Delete">
+                                        <IconButton
+                                          color="primary"
+                                          aria-label="delete"
+                                          onClick={handleDelete}
+                                        >
+                                          <DeleteIcon />
+                                        </IconButton>
+                                      </Tooltip>
+                                    </Grid>}
+                                </TableCell>
+                              </TableRow>
+                            </TableBody>
+                          </Table>
+                        </Grid>
                       </Grid>
-                      <Grid item style={{float: 'right'}}>
-                        <label htmlFor="image">
-                          <Button
-                            color="primary"
-                            variant="contained"
-                            aria-label="uploadFile"
-                            component="span"
-                          >
-                            Thêm mẫu
-                          </Button>
-                        </label>
-                      </Grid>
-                      <Table>
-                        <TableHead>
-                          <TableRow>
-                            <TableCell>STT</TableCell>
-                            <TableCell>Mẫu vân tay</TableCell>
-                            <TableCell>Mã số vân tay</TableCell>
-                            <TableCell>Kết quả</TableCell>
-                            <TableCell>Thao tác</TableCell>
-                          </TableRow>
-                        </TableHead>
-                        <TableBody>
-                          <TableRow>
-                            <TableCell>{id}</TableCell>
-                            <TableCell>
-                              <input
-                                id="image"
-                                className="imageUpload"
-                                type="file"
-                                onChange={onSelectFile}
-                              />
-                              {selectedFile &&
-                                <img alt="" className="img" src={preview} />}
-                            </TableCell>
-                            <TableCell>{id}</TableCell>
-                            <TableCell>{id}</TableCell>
-                            <TableCell>
-                              {show &&
-                                <Grid>
-                                  <Tooltip title="See">
-                                    <IconButton
-                                      color="primary"
-                                      aria-label="see"
-                                    >
-                                      <VisibilityIcon />
-                                    </IconButton>
-                                  </Tooltip>
-                                  <Tooltip title="Upload file">
-                                    <IconButton
-                                      color="primary"
-                                      aria-label="uploadFile"
-                                      component="span"
-                                    >
-                                      <CloudUploadIcon />
-                                    </IconButton>
-                                  </Tooltip>
-                                  <Tooltip title="Delete">
-                                    <IconButton
-                                      color="primary"
-                                      aria-label="delete"
-                                      onClick={handleDelete}
-                                    >
-                                      <DeleteIcon />
-                                    </IconButton>
-                                  </Tooltip>
-                                </Grid>}
-                            </TableCell>
-                          </TableRow>
-                        </TableBody>
-                      </Table>
                     </Grid>}
                 </Grid>
 
