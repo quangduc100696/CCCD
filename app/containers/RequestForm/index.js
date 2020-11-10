@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Button,
   Dialog,
@@ -21,58 +21,55 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import ImageUpload from './ImageUpload';
 import './styles.css';
 
-function RequestForm () {
-  const [classify, setClassify] = useState ([0]);
-  const [open, setOpen] = useState (false);
-  const [selectedFile, setSelectedFile] = useState ();
-  const [preview, setPreview] = useState ();
-  const [id, setId] = useState ();
-  const [show, setShow] = useState (false);
-  const [imgs, setImgs] = useState ();
+function RequestForm() {
+  const [classify, setClassify] = useState([0]);
+  const [open, setOpen] = useState(false);
+  const [selectedFile, setSelectedFile] = useState();
+  const [preview, setPreview] = useState();
+  const [id, setId] = useState();
+  const [show, setShow] = useState(false);
+  const [imgs, setImgs] = useState();
 
-  useEffect (
-    () => {
-      if (!selectedFile) {
-        setPreview (undefined);
-        return;
-      }
+  useEffect(() => {
+    if (!selectedFile) {
+      setPreview(undefined);
+      return;
+    }
 
-      const objectUrl = URL.createObjectURL (selectedFile);
-      setPreview (objectUrl);
+    const objectUrl = URL.createObjectURL(selectedFile);
+    setPreview(objectUrl);
 
-      // return () => URL.revokeObjectURL(objectUrl);
-    },
-    [selectedFile]
-  );
+    // return () => URL.revokeObjectURL(objectUrl);
+  }, [selectedFile]);
 
   const handleClassifyChange = e => {
-    setClassify (e.target.value);
+    setClassify(e.target.value);
   };
 
   const handleOpen = () => {
-    setOpen (true);
+    setOpen(true);
   };
 
   const handleClose = () => {
-    setOpen (false);
+    setOpen(false);
   };
 
   const onSelectFile = e => {
     if (!e.target.files || e.target.files.length === 0) {
-      setSelectedFile (undefined);
+      setSelectedFile(undefined);
       return;
     }
-    setShow (true);
-    setId (1);
-    setSelectedFile (e.target.files[0]);
+    setShow(true);
+    setId(1);
+    setSelectedFile(e.target.files[0]);
   };
 
   const handleDelete = () => {
-    setSelectedFile (null);
+    setSelectedFile(null);
   };
 
   const handleOnchange = event => {
-    setImgs (event.target.files);
+    setImgs(event.target.files);
   };
 
   return (
@@ -81,7 +78,7 @@ function RequestForm () {
         Thêm mới
       </Button>
       <Dialog fullScreen open={open}>
-        <Paper elevation={0} style={{padding: '1%'}}>
+        <Paper elevation={0} style={{ padding: '1%' }}>
           <Grid>
             <Typography align="center" variant="h6">
               PHIẾU YÊU CẦU
@@ -89,7 +86,7 @@ function RequestForm () {
           </Grid>
 
           <Paper elevation={0}>
-            <Grid item xl={12} xs={12} style={{margin: '1%'}}>
+            <Grid item xl={12} xs={12} style={{ margin: '1%' }}>
               <Grid container spacing={3}>
                 <Grid item xl={6} xs={6}>
                   <Typography> Mã phiếu yêu cầu </Typography>
@@ -156,7 +153,7 @@ function RequestForm () {
 
               <Grid container spacing={3}>
                 <Grid container item xl={6} xs={6}>
-                  {classify === 1 &&
+                  {classify === 1 && (
                     <Grid container item spacing={3} xl={12} xs={12}>
                       <Grid item xl={6} xs={6}>
                         <Grid
@@ -239,17 +236,18 @@ function RequestForm () {
                         <img alt="" className="img11" src={imgs} />
 
                         {imgs &&
-                          [...imgs].map (file => (
+                          [...imgs].map(file => (
                             <img
                               alt=""
                               className="img11"
-                              src={URL.createObjectURL (file)}
+                              src={URL.createObjectURL(file)}
                             />
                           ))}
                       </Grid>
-                    </Grid>}
+                    </Grid>
+                  )}
 
-                  {classify === 2 &&
+                  {classify === 2 && (
                     <Grid container item spacing={3} xl={12} xs={12}>
                       <Grid item xl={6} xs={6}>
                         <Grid
@@ -286,9 +284,10 @@ function RequestForm () {
                           <ImageUpload />
                         </Grid>
                       </Grid>
-                    </Grid>}
+                    </Grid>
+                  )}
 
-                  {classify === 3 &&
+                  {classify === 3 && (
                     <Grid container item spacing={3} xl={12} xs={12}>
                       <Grid item xl={12} xs={12}>
                         <Grid
@@ -333,17 +332,18 @@ function RequestForm () {
                                     type="file"
                                     onChange={onSelectFile}
                                   />
-                                  {selectedFile &&
+                                  {selectedFile && (
                                     <img
                                       alt=""
                                       className="imgTable"
                                       src={preview}
-                                    />}
+                                    />
+                                  )}
                                 </TableCell>
                                 <TableCell>{id}</TableCell>
                                 <TableCell>{id}</TableCell>
                                 <TableCell>
-                                  {show &&
+                                  {show && (
                                     <Grid>
                                       <Tooltip title="See">
                                         <IconButton
@@ -371,14 +371,16 @@ function RequestForm () {
                                           <DeleteIcon />
                                         </IconButton>
                                       </Tooltip>
-                                    </Grid>}
+                                    </Grid>
+                                  )}
                                 </TableCell>
                               </TableRow>
                             </TableBody>
                           </Table>
                         </Grid>
                       </Grid>
-                    </Grid>}
+                    </Grid>
+                  )}
                 </Grid>
 
                 <Grid item xl={6} xs={6}>
