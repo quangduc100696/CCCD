@@ -230,19 +230,19 @@ function RequestForm () {
                           </Grid>
                         </Grid>
                         <input
-                          id="input-upload-image"
+                          id="image"
                           type="file"
-                          className="img"
+                          className="imageUpload"
                           multiple="true"
                           onChange={handleOnchange}
                         />
-                        <img alt="" className="img" src={imgs} />
+                        <img alt="" className="img11" src={imgs} />
 
                         {imgs &&
                           [...imgs].map (file => (
                             <img
                               alt=""
-                              className="img"
+                              className="img11"
                               src={URL.createObjectURL (file)}
                             />
                           ))}
@@ -336,7 +336,7 @@ function RequestForm () {
                                   {selectedFile &&
                                     <img
                                       alt=""
-                                      className="img"
+                                      className="imgTable"
                                       src={preview}
                                     />}
                                 </TableCell>
