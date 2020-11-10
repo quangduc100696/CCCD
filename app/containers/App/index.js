@@ -14,11 +14,12 @@ import {Switch, Route} from 'react-router-dom';
 import HomePage from 'containers/HomePage/Loadable';
 import FeaturePage from 'containers/FeaturePage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
+import RequestForm from 'containers/RequestForm/Loadable';
+import InformationForm from 'containers/InformationForm/Loadable';
 import Header from 'components/Header';
 import Footer from 'components/Footer';
 
 import GlobalStyle from '../../global-styles';
-import RequestForm from '../RequestForm';
 
 const AppWrapper = styled.div`
   max-width: 100%;
@@ -32,19 +33,16 @@ const AppWrapper = styled.div`
 export default function App () {
   return (
     <AppWrapper>
-      {/* <Helmet
-        titleTemplate="%s - React.js Boilerplate"
-        defaultTitle="React.js Boilerplate"
-      >
+      <Helmet titleTemplate="CCCD" defaultTitle="CCCD">
         <meta name="description" content="A React.js Boilerplate application" />
       </Helmet>
       <Header />
       <Switch>
-        <Route exact path="/" component={HomePage} />
-        <Route path="/features" component={FeaturePage} />
+        {/* <Route exact path="/" component={HomePage} /> */}
+        <Route exact path="/" component={RequestForm} />
+        {/* <Route path="/features" component={InformationForm} /> */}
         <Route path="" component={NotFoundPage} />
-      </Switch> */}
-      <RequestForm />
+      </Switch>
       {/* <Footer />
       <GlobalStyle /> */}
     </AppWrapper>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   Button,
   Dialog,
@@ -19,69 +19,69 @@ import VisibilityIcon from '@material-ui/icons/Visibility';
 import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 import DeleteIcon from '@material-ui/icons/Delete';
 import ImageUpload from './ImageUpload';
-import UploadImage from './UploadImage';
 import './styles.css';
-import { findIndex } from 'lodash';
-import Image from './Image';
 
-function RequestForm() {
-  const [classify, setClassify] = useState([0]);
-  const [open, setOpen] = useState(false);
-  const [selectedFile, setSelectedFile] = useState();
-  const [preview, setPreview] = useState();
-  const [id, setId] = useState();
-  const [show, setShow] = useState(false);
-  const [imgs, setImgs] = useState()
+function RequestForm () {
+  const [classify, setClassify] = useState ([0]);
+  const [open, setOpen] = useState (false);
+  const [selectedFile, setSelectedFile] = useState ();
+  const [preview, setPreview] = useState ();
+  const [id, setId] = useState ();
+  const [show, setShow] = useState (false);
+  const [imgs, setImgs] = useState ();
 
-  useEffect(() => {
-    if (!selectedFile) {
-      setPreview(undefined);
-      return;
-    }
+  useEffect (
+    () => {
+      if (!selectedFile) {
+        setPreview (undefined);
+        return;
+      }
 
-    const objectUrl = URL.createObjectURL(selectedFile);
-    setPreview(objectUrl);
+      const objectUrl = URL.createObjectURL (selectedFile);
+      setPreview (objectUrl);
 
-    return () => URL.revokeObjectURL(objectUrl);
-  }, [selectedFile]);
+      // return () => URL.revokeObjectURL(objectUrl);
+    },
+    [selectedFile]
+  );
 
   const handleClassifyChange = e => {
-    setClassify(e.target.value);
+    setClassify (e.target.value);
   };
 
   const handleOpen = () => {
-    setOpen(true);
+    setOpen (true);
   };
 
   const handleClose = () => {
-    setOpen(false);
+    setOpen (false);
   };
 
   const onSelectFile = e => {
     if (!e.target.files || e.target.files.length === 0) {
-      setSelectedFile(undefined);
+      setSelectedFile (undefined);
       return;
     }
-    setShow(true);
-    setId(1);
-    setSelectedFile(e.target.files[0]);
+    setShow (true);
+    setId (1);
+    setSelectedFile (e.target.files[0]);
   };
 
   const handleDelete = () => {
-    setSelectedFile(null);
+    setSelectedFile (null);
   };
-  const _onChange = event => {
-    setImgs (
-      event.target.files,
-    );
+
+  const handleOnchange = event => {
+    setImgs (event.target.files);
   };
+
   return (
     <Grid>
       <Button variant="outlined" color="primary" onClick={handleOpen}>
         Thêm mới
       </Button>
       <Dialog fullScreen open={open}>
-        <Paper elevation={0} style={{ padding: '1%' }}>
+        <Paper elevation={0} style={{padding: '1%'}}>
           <Grid>
             <Typography align="center" variant="h6">
               PHIẾU YÊU CẦU
@@ -89,7 +89,7 @@ function RequestForm() {
           </Grid>
 
           <Paper elevation={0}>
-            <Grid item xl={12} xs={12} style={{ margin: '1%' }}>
+            <Grid item xl={12} xs={12} style={{margin: '1%'}}>
               <Grid container spacing={3}>
                 <Grid item xl={6} xs={6}>
                   <Typography> Mã phiếu yêu cầu </Typography>
@@ -156,7 +156,7 @@ function RequestForm() {
 
               <Grid container spacing={3}>
                 <Grid container item xl={6} xs={6}>
-                  {classify === 1 && (
+                  {classify === 1 &&
                     <Grid container item spacing={3} xl={12} xs={12}>
                       <Grid item xl={6} xs={6}>
                         <Grid
@@ -232,75 +232,80 @@ function RequestForm() {
                         <input
                           id="input-upload-image"
                           type="file"
-                          name="user[image]"
+                          className="img"
                           multiple="true"
-                          onChange={_onChange}
+                          onChange={handleOnchange}
                         />
-                        <img src={imgs} />
+                        <img alt="" className="img" src={imgs} />
 
                         {imgs &&
-                          [...imgs].map(file => (
-                            <img src={URL.createObjectURL(file)} />
+                          [...imgs].map (file => (
+                            <img
+                              alt=""
+                              className="img"
+                              src={URL.createObjectURL (file)}
+                            />
                           ))}
                       </Grid>
-                    </Grid>
-                  }
-                  {classify === 2 && (
-                    <Grid container alignItems="center" justify="space-between">
-                      <Grid item container xs = {6} justify="space-between">
-                        <Grid item>
-                          <Typography align="center" style={{ marginTop: 10 }}>
-                            Mẫu vân tay{' '}
-                          </Typography>
-                        </Grid>
-                        <Grid item>
-                          <Tooltip title="See">
-                            <IconButton color="primary" aria-label="see">
-                              <VisibilityIcon />
-                            </IconButton>
-                          </Tooltip>
-                          <label htmlFor="input-upload-image">
-                            <Tooltip title="Upload file">
-                              <IconButton
-                                color="primary"
-                                aria-label="uploadFile"
-                                component="span"
-                              >
-                                <CloudUploadIcon />
+                    </Grid>}
+
+                  {classify === 2 &&
+                    <Grid container item spacing={3} xl={12} xs={12}>
+                      <Grid item xl={6} xs={6}>
+                        <Grid
+                          container
+                          alignItems="center"
+                          justify="space-between"
+                        >
+                          <Grid>Mẫu vân tay</Grid>
+                          <Grid>
+                            <Tooltip title="See">
+                              <IconButton color="primary" aria-label="see">
+                                <VisibilityIcon />
                               </IconButton>
                             </Tooltip>
-                          </label>
-                          <Tooltip title="Delete">
-                            <IconButton color="primary" aria-label="delete" >
-                              <DeleteIcon />
-                            </IconButton>
-                          </Tooltip>
+                            <label htmlFor="input-upload-image">
+                              <Tooltip title="Upload file">
+                                <IconButton
+                                  color="primary"
+                                  aria-label="uploadFile"
+                                  component="span"
+                                >
+                                  <CloudUploadIcon />
+                                </IconButton>
+                              </Tooltip>
+                            </label>
+                            <Tooltip title="Delete">
+                              <IconButton color="primary" aria-label="delete">
+                                <DeleteIcon />
+                              </IconButton>
+                            </Tooltip>
+                          </Grid>
+                        </Grid>
+                        <Grid item xl={6} xs={6}>
+                          <ImageUpload />
                         </Grid>
                       </Grid>
-                      <Grid item container>
-                        <ImageUpload />
-                      </Grid>
-                    </Grid>
-                  )}
+                    </Grid>}
 
-                  {classify === 3 && (
-                    <>
-                      <Grid container justify="space-between">
-                        <Grid item>
-                          <Typography align="center" style={{marginTop: 10}}> <b>DANH SÁCH MẪU VÂN TAY</b> (tối đa 10 mẫu/phiếu)</Typography>
-                        </Grid>
-                        <Grid item style={{ float: 'right' }}>
-                          <label htmlFor="image" >
-                            <Button
-                              color="primary"
-                              variant="contained"
-                              aria-label="uploadFile"
-                              component="span"
-                            >
-                              Thêm mẫu
-                            </Button>
-                          </label>
-                        </Grid>
+                  {classify === 3 &&
+                    <Grid container justify="space-between">
+                      <Grid item>
+                        <Typography>
+                          <b>DANH SÁCH MẪU VÂN TAY</b> (tối đa 10 mẫu/phiếu)
+                        </Typography>
+                      </Grid>
+                      <Grid item style={{float: 'right'}}>
+                        <label htmlFor="image">
+                          <Button
+                            color="primary"
+                            variant="contained"
+                            aria-label="uploadFile"
+                            component="span"
+                          >
+                            Thêm mẫu
+                          </Button>
+                        </label>
                       </Grid>
                       <Table>
                         <TableHead>
@@ -315,22 +320,29 @@ function RequestForm() {
                         <TableBody>
                           <TableRow>
                             <TableCell>{id}</TableCell>
-                            <TableCell>  <input
+                            <TableCell>
+                              <input
                                 id="image"
-                              className="imageUpload"
-                              type="file"
+                                className="imageUpload"
+                                type="file"
                                 onChange={onSelectFile}
-                            />
-                            {selectedFile && <img src={preview} />}</TableCell>
+                              />
+                              {selectedFile &&
+                                <img alt="" className="img" src={preview} />}
+                            </TableCell>
                             <TableCell>{id}</TableCell>
                             <TableCell>{id}</TableCell>
-                            <TableCell>{show ? (
-                                <>
+                            <TableCell>
+                              {show &&
+                                <Grid>
                                   <Tooltip title="See">
-                               <IconButton color="primary" aria-label="see">
+                                    <IconButton
+                                      color="primary"
+                                      aria-label="see"
+                                    >
                                       <VisibilityIcon />
-                               </IconButton>
-                             </Tooltip>
+                                    </IconButton>
+                                  </Tooltip>
                                   <Tooltip title="Upload file">
                                     <IconButton
                                       color="primary"
@@ -349,28 +361,24 @@ function RequestForm() {
                                       <DeleteIcon />
                                     </IconButton>
                                   </Tooltip>
-                                </>
-                              ) : (
-                                ''
-                              )}
+                                </Grid>}
                             </TableCell>
                           </TableRow>
                         </TableBody>
                       </Table>
-                    </>
-                  )}
+                    </Grid>}
                 </Grid>
 
                 <Grid item xl={6} xs={6}>
-                  {/* <Typography >Mô tả yêu cầu</Typography>
+                  <Typography>Mô tả yêu cầu</Typography>
                   <TextField
                     fullWidth
                     margin="dense"
                     className="description"
-                    rows={5}
+                    rows={10}
                     multiline
                     variant="outlined"
-                  /> */}
+                  />
                 </Grid>
               </Grid>
             </Grid>

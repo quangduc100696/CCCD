@@ -38,7 +38,7 @@ function ImageUpload () {
         type="file"
         onChange={onSelectFile}
       />
-      {selectedFile && <img src={preview} />}
+      {selectedFile && <img alt="" className="img" src={preview} />}
     </div>
   );
 }

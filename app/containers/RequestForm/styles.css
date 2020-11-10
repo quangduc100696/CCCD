@@ -1,3 +1,7 @@
 .imageUpload {
   display: none;
 }
+
+.img {
+  width: 200%;
+}
