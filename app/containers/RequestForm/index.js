@@ -325,7 +325,7 @@ function RequestForm() {
                             <TableBody>
                               <TableRow>
                                 <TableCell>{id}</TableCell>
-                                <TableCell>
+                                <TableCell className="tableImg">
                                   <input
                                     id="image"
                                     className="imageUpload"
