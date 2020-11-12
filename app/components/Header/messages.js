@@ -16,4 +16,8 @@ export default defineMessages({
     id: `${scope}.features`,
     defaultMessage: 'Features',
   },
+  newRequestForm: {
+    id: `${scope}.newRequestForm`,
+    defaultMessage: 'New Request Form',
+  },
 });

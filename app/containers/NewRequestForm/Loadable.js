@@ -1,5 +1,5 @@
 /**
- * Asynchronously loads the component for RequestForm
+ * Asynchronously loads the component for NewRequestForm
  */
 
 import React from 'react';

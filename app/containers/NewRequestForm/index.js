@@ -21,7 +21,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import ImageUpload from './ImageUpload';
 import './styles.css';
 
-function RequestForm() {
+function NewRequestForm() {
   const [classify, setClassify] = useState([0]);
   const [open, setOpen] = useState(false);
   const [selectedFile, setSelectedFile] = useState();
@@ -93,7 +93,7 @@ function RequestForm() {
                   <TextField
                     fullWidth
                     margin="dense"
-                    className="requestFormCode"
+                    className="newRequestFormCode"
                     variant="outlined"
                     label="20201015-A08-034"
                     disabled
@@ -104,7 +104,7 @@ function RequestForm() {
                   <TextField
                     fullWidth
                     margin="dense"
-                    className="requestFormUnit"
+                    className="newRequestFormUnit"
                     variant="outlined"
                     label="Cục Quản lý xuất nhập cảnh (A08)"
                     disabled
@@ -398,58 +398,43 @@ function RequestForm() {
             </Grid>
           </Paper>
           <Grid container justify="center" spacing={3}>
-            <Grid item xs={2}>
-              <Button
-                fullWidth
-                color="primary"
-                variant="outlined"
-                onClick={handleClose}
-              >
-                Quay lại
-              </Button>
-            </Grid>
-            <Grid item xs={2}>
-              <Button
-                fullWidth
-                color="primary"
-                onClick={handleClose}
-                variant="outlined"
-              >
-                Sửa
-              </Button>
+            <Grid item>
+              <Tooltip title="Cancel">
+                <Button
+                  style={{ height: 35, width: 250 }}
+                  color="primary"
+                  variant="outlined"
+                  onClick={handleClose}
+                >
+                  Hủy
+                </Button>
+              </Tooltip>
             </Grid>
 
-            <Grid item xs={2}>
-              <Button
-                fullWidth
-                color="primary"
-                onClick={handleClose}
-                variant="contained"
-              >
-                Ghi
-              </Button>
+            <Grid item>
+              <Tooltip title="Save">
+                <Button
+                  style={{ height: 35, width: 250 }}
+                  color="primary"
+                  onClick={handleClose}
+                  variant="outlined"
+                >
+                  Lưu
+                </Button>
+              </Tooltip>
             </Grid>
 
-            <Grid item xs={2}>
-              <Button
-                fullWidth
-                color="primary"
-                onClick={handleClose}
-                variant="outlined"
-              >
-                Ghi và gửi
-              </Button>
-            </Grid>
-
-            <Grid item xs={2}>
-              <Button
-                fullWidth
-                color="primary"
-                onClick={handleClose}
-                variant="outlined"
-              >
-                Xóa
-              </Button>
+            <Grid item>
+              <Tooltip title="Save and send">
+                <Button
+                  style={{ height: 35, width: 250 }}
+                  color="primary"
+                  onClick={handleClose}
+                  variant="contained"
+                >
+                  Lưu & gửi
+                </Button>
+              </Tooltip>
             </Grid>
           </Grid>
         </Paper>
@@ -458,4 +443,4 @@ function RequestForm() {
   );
 }
 
-export default RequestForm;
+export default NewRequestForm;

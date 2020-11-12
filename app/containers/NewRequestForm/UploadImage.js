@@ -1,25 +1,26 @@
 import React from 'react';
-import {IconButton, Tooltip} from '@material-ui/core';
+import { IconButton, Tooltip } from '@material-ui/core';
 import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 
 class UploadImage extends React.Component {
-  constructor (props) {
-    super (props);
+  constructor(props) {
+    super(props);
     this.state = {
       imgs: [],
     };
   }
-  getInitialState () {
-    return {file: []};
+
+  getInitialState() {
+    return { file: [] };
   }
 
-  _onChange = event => {
-    this.setState ({
+  handleOnChange = event => {
+    this.setState({
       imgs: event.target.files,
     });
   };
 
-  render () {
+  render() {
     return (
       <div>
         <input
@@ -27,7 +28,7 @@ class UploadImage extends React.Component {
           type="file"
           name="user[image]"
           multiple="true"
-          onChange={this._onChange}
+          onChange={this.handleOnChange}
         />
         <label htmlFor="input-upload-image">
           <Tooltip title="Upload file">
@@ -41,11 +42,11 @@ class UploadImage extends React.Component {
           </Tooltip>
         </label>
 
-        <img src={this.state.imgSrc} />
+        <img alt="" src={this.state.imgSrc} />
 
         {this.state.imgs &&
-          [...this.state.imgs].map (file => (
-            <img src={URL.createObjectURL (file)} />
+          [...this.state.imgs].map(file => (
+            <img alt="" src={URL.createObjectURL(file)} />
           ))}
       </div>
     );

@@ -4,7 +4,7 @@
  *
  */
 import produce from 'immer';
-import { REQUEST_FORM_SUSSCESS, REQUEST_FORM, VALUE_SELECT } from './constants';
+import {REQUEST_FORM_SUSSCESS, REQUEST_FORM, VALUE_SELECT} from './constants';
 
 export const initialState = {
   requestForm: [],
@@ -13,7 +13,7 @@ export const initialState = {
 
 /* eslint-disable default-case, no-param-reassign */
 const customerReducer = (state = initialState, action) =>
-  produce(state, draft => {
+  produce (state, draft => {
     switch (action.type) {
       case REQUEST_FORM:
         break;
