@@ -18,8 +18,8 @@ function Header () {
         <HeaderLink to="/">
           <FormattedMessage {...messages.home} />
         </HeaderLink>
-        <HeaderLink to="/newRequestForm">
-          <FormattedMessage {...messages.newRequestForm} />
+        <HeaderLink to="/requestFormPage">
+          <FormattedMessage {...messages.requestFormPage} />
         </HeaderLink>
       </NavBar>
     </div>

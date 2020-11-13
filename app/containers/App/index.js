@@ -7,19 +7,19 @@
  */
 
 import React from 'react';
-import { Helmet } from 'react-helmet';
+import {Helmet} from 'react-helmet';
 import styled from 'styled-components';
-import { Switch, Route } from 'react-router-dom';
+import {Switch, Route} from 'react-router-dom';
 
 import HomePage from 'containers/HomePage/Loadable';
 import FeaturePage from 'containers/FeaturePage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
-import NewRequestForm from 'containers/NewRequestForm/Loadable';
 import InformationForm from 'containers/InformationForm/Loadable';
 import Header from 'components/Header';
 import Footer from 'components/Footer';
 
 import GlobalStyle from '../../global-styles';
+import RequestFormPage from '../RequestFormPage';
 
 const AppWrapper = styled.div`
   max-width: 100%;
@@ -30,7 +30,7 @@ const AppWrapper = styled.div`
   flex-direction: column;
 `;
 
-export default function App() {
+export default function App () {
   return (
     <AppWrapper>
       <Helmet titleTemplate="CCCD" defaultTitle="CCCD">
@@ -39,7 +39,7 @@ export default function App() {
       <Header />
       <Switch>
         <Route exact path="/" component={HomePage} />
-        <Route path="/newRequestForm" component={NewRequestForm} />
+        <Route path="/requestFormPage" component={RequestFormPage} />
         <Route path="" component={NotFoundPage} />
       </Switch>
       {/* <Footer />
