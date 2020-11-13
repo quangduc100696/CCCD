@@ -1,34 +1,63 @@
 import React, { useState } from 'react';
-import { Dialog, Grid, IconButton, Tooltip } from '@material-ui/core';
+import { Dialog, Grid, IconButton, Paper, Tooltip } from '@material-ui/core';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
+import { Delete } from '@material-ui/icons';
 import NewRequestForm from '../NewRequestForm';
+import DeleteForm from '../DeleteForm';
 
 RequestFormPage.propTypes = {};
 
 function RequestFormPage() {
-  const [open, setOpen] = useState(false);
+  const [openAdd, setOpenAdd] = useState(false);
+  const [openDel, setOpenDel] = useState(false);
 
-  const handleOpen = () => {
-    setOpen(true);
+  const handleOpenAdd = () => {
+    setOpenAdd(true);
   };
 
-  const handleClose = () => {
-    setOpen(false);
+  const handleCloseAdd = () => {
+    setOpenAdd(false);
+  };
+
+  const handleOpenDel = () => {
+    setOpenDel(true);
+  };
+
+  const handleCloseDel = () => {
+    setOpenAdd(false);
   };
 
   return (
-    <div>
-      <Grid>
-        <Tooltip title="Add">
-          <IconButton variant="outlined" color="primary" onClick={handleOpen}>
-            <AddCircleIcon fontSize="large" />
-          </IconButton>
-        </Tooltip>
-        <Dialog fullScreen open={open}>
-          <NewRequestForm open={open} closeClick={handleClose} />
+    <Grid>
+      <Paper>
+        <Grid>
+          <Tooltip title="Add">
+            <IconButton
+              variant="outlined"
+              color="primary"
+              onClick={handleOpenAdd}
+            >
+              <AddCircleIcon fontSize="large" />
+            </IconButton>
+          </Tooltip>
+          <Tooltip title="Delete">
+            <IconButton
+              variant="outlined"
+              color="primary"
+              onClick={handleOpenDel}
+            >
+              <Delete fontSize="large" />
+            </IconButton>
+          </Tooltip>
+        </Grid>
+        <Dialog fullScreen open={openAdd}>
+          <NewRequestForm open={openAdd} requestFromClose={handleCloseAdd} />
         </Dialog>
-      </Grid>
-    </div>
+        <Dialog open={openDel}>
+          <DeleteForm open={openAdd} delClose={handleCloseDel} />
+        </Dialog>
+      </Paper>
+    </Grid>
   );
 }
 
