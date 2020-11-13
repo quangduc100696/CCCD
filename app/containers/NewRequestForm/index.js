@@ -55,7 +55,7 @@ const useStyles = makeStyles({
 });
 
 function NewRequestForm(props) {
-  const { requestFromClose } = props;
+  const { requestFormClose } = props;
   const [classify, setClassify] = useState([0]);
   const [selectedFile, setSelectedFile] = useState();
   const [preview, setPreview] = useState();
@@ -98,8 +98,8 @@ function NewRequestForm(props) {
   };
 
   const handleClose = () => {
-    if (requestFromClose) {
-      requestFromClose(false);
+    if (requestFormClose) {
+      requestFormClose(false);
     }
   };
 

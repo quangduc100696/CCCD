@@ -51,7 +51,7 @@ function RequestFormPage() {
           </Tooltip>
         </Grid>
         <Dialog fullScreen open={openAdd}>
-          <NewRequestForm open={openAdd} requestFromClose={handleCloseAdd} />
+          <NewRequestForm open={openAdd} requestFormClose={handleCloseAdd} />
         </Dialog>
         <Dialog open={openDel}>
           <DeleteForm open={openDel} delClose={handleCloseDel} />
