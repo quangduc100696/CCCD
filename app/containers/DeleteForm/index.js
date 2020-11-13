@@ -52,10 +52,10 @@ function DeleteForm(props) {
   const classes = useStyles();
 
   const handleClose = () => {
-    console.log({ open });
     if (delClose) {
       delClose(false);
     }
+    console.log({ open });
   };
 
   return (

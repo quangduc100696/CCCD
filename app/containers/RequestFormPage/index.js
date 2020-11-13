@@ -24,7 +24,7 @@ function RequestFormPage() {
   };
 
   const handleCloseDel = () => {
-    setOpenAdd(false);
+    setOpenDel(false);
   };
 
   return (
@@ -54,7 +54,7 @@ function RequestFormPage() {
           <NewRequestForm open={openAdd} requestFromClose={handleCloseAdd} />
         </Dialog>
         <Dialog open={openDel}>
-          <DeleteForm open={openAdd} delClose={handleCloseDel} />
+          <DeleteForm open={openDel} delClose={handleCloseDel} />
         </Dialog>
       </Paper>
     </Grid>
